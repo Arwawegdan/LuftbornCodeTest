@@ -19,6 +19,6 @@ public static class AdditionalServices
 
     public static void RegisterRepositories(this WebApplicationBuilder builder)
     {
-             builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+             builder.Services.AddTransient<ITodoListTaskRepository, TodoListTaskRepository>();
     }
 }

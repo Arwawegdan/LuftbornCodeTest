@@ -13,7 +13,7 @@ Leverages Tailwind CSS for rapid, responsive styling.
 Focuses on a user-centric design for an intuitive experience.
 
 todo-list-app
-<div> 
+<pre> 
 ├── src/
 │   ├── API/  # ASP.NET back-end 
 │   │   └──  ToDo List Controllers, repositories, Entities.
@@ -25,4 +25,4 @@ todo-list-app
 ├
 └──  README.md  
 
-</div>
+</pre>

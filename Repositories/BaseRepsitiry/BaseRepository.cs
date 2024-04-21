@@ -28,9 +28,9 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         await SaveChangesAsync();
     }
 
-    public virtual async Task Update(TEntity entity)
+    public virtual async Task Update(int id, TEntity entity)
     {
-        TEntity? entityFromDb = await Get(entity.Id);
+        TEntity? entityFromDb = await Get(id);
         if (entityFromDb == null)
             throw new ArgumentNullException($"{nameof(TEntity)} was not found in DB");
 

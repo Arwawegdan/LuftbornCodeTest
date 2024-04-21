@@ -14,4 +14,6 @@ public class ApplicationDbContext : DbContext
 
         modelBuilder.ApplyConfiguration(new TodoListTaskConfiguration());
     }
+
+
 }

@@ -1,13 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 builder.RegisteredServices();
 
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -16,6 +11,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 app.MapControllers();
+app.UseCors("AllowAnyOrigin");
 
 ApplicationDbContext applicationDbContext = app.Services.CreateScope()
                                                .ServiceProvider.GetRequiredService<ApplicationDbContext>();

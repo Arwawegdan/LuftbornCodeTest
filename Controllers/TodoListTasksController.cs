@@ -1,4 +1,6 @@
-﻿namespace LuftbornCodeTest;
+﻿using Domains;
+
+namespace LuftbornCodeTest;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -24,13 +26,10 @@ public class TodoListTasksController(ITodoListTaskRepository _todoListTaskReposi
         return Ok(TodoListTask);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutTask(int id, TodoListTaskDtos todoListTaskDtos)
+    [HttpPut]
+    public async Task<IActionResult> PutTask(TodoListTaskDtos todoListTaskDtos)
     {
-        if (id != todoListTaskDtos.Id)
-            return BadRequest();
-   
-        TodoListTask updatedToDoTask = await _todoListTaskRepository.UpdatePartially(id, todoListTaskDtos);
+            TodoListTask updatedToDoTask = await _todoListTaskRepository.UpdatePartially(todoListTaskDtos.Id, todoListTaskDtos);
 
         return CreatedAtAction("GetTask", new { id = updatedToDoTask.Id }, updatedToDoTask);
     }

@@ -1,6 +1,4 @@
-﻿using Domains;
-
-namespace LuftbornCodeTest;
+﻿namespace LuftbornCodeTest;
 
 public class TodoListTaskRepository : BaseRepository<TodoListTask>, ITodoListTaskRepository
 {
@@ -21,15 +19,12 @@ public class TodoListTaskRepository : BaseRepository<TodoListTask>, ITodoListTas
         return await _dbSet.Where(e => e.Status.Equals(Status.Inprogress)).ToListAsync();
     }
 
-    public async Task<TodoListTask> UpdatePartially(int id, TodoListTaskDtos todoListTaskDtos)
+    public async Task<TodoListTask> UpdatePartially(TodoListTaskDtos todoListTaskDtos)
     {
-        if (todoListTaskDtos == null || id != todoListTaskDtos.Id)
-            throw new ArgumentException("Invalid todoListTask or ID mismatch");
-
-        var existingTask = await _dbSet.FindAsync(id);
+        var existingTask = await _dbSet.FindAsync(todoListTaskDtos.Id);
 
         if (existingTask == null)
-            throw new ArgumentException($"TodoListTask with ID {id} not found");
+            throw new ArgumentException($"TodoListTask with ID {todoListTaskDtos.Id} not found");
 
         if (todoListTaskDtos.Status != null) existingTask.Status = todoListTaskDtos.Status.Value;
         if (todoListTaskDtos.Discription != null) existingTask.Discription = todoListTaskDtos.Discription;

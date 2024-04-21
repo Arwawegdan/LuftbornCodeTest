@@ -12,5 +12,5 @@
     Task Remove(int id);
     Task Remove(TEntity entity);
 
-    Task Update(int id , TEntity entity);
+    Task Update(TEntity entity);
 }

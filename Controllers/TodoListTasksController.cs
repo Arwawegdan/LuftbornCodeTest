@@ -29,7 +29,7 @@ public class TodoListTasksController(ITodoListTaskRepository _todoListTaskReposi
     [HttpPut]
     public async Task<IActionResult> PutTask(TodoListTaskDtos todoListTaskDtos)
     {
-            TodoListTask updatedToDoTask = await _todoListTaskRepository.UpdatePartially(todoListTaskDtos.Id, todoListTaskDtos);
+            TodoListTask updatedToDoTask = await _todoListTaskRepository.UpdatePartially(todoListTaskDtos);
 
         return CreatedAtAction("GetTask", new { id = updatedToDoTask.Id }, updatedToDoTask);
     }
